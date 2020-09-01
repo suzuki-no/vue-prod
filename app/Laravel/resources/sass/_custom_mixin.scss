@@ -1,0 +1,42 @@
+//position
+@mixin position($pos: relative, $dis: block, $wid: auto, $hei: auto, $top: non, $lef: non, $rig: non, $bot: non) {
+  position: $pos;
+  display: $dis;
+  width: $wid;
+  height: $hei;
+  @if ($top != non) {top: $top;}
+  @if ($lef != non) {left: $lef;}
+  @if ($rig != non) {right: $rig;}
+  @if ($bot != non) {bottom: $bot;}
+}
+//y軸(タテ)
+@mixin sticky-y($top: 0, $zin: 100){
+  position: -webkit-sticky;
+  position: sticky;
+  top: $top;
+  z-index: $zin;
+}
+//x軸(ヨコ)
+@mixin sticky-x($lef: 0, $zin: 100){
+  position: -webkit-sticky;
+  position: sticky;
+  left: $top;
+  z-index: $zin;
+}
+//filter
+@mixin filter($brig: 100%, $blur: non, $cont: non, $gray: non, $huer: non,
+              $drop: non, $inve: non, $opac: non, $satu: non, $sepi: non){
+  $property: brightness($brig);
+  @if ($blur != non) { $property : $property + blur($blur) }
+  @if ($cont != non) { $property : $property + contrast($cont) }
+  @if ($gray != non) { $property : $property + grayscale($gray) }
+  @if ($huer != non) { $property : $property + hue-rotate($huer) }
+  @if ($drop != non) { $property : $property + drop-shadow($drop) }
+  @if ($inve != non) { $property : $property + invert($inve) }
+  @if ($opac != non) { $property : $property + opacity($opac) }
+  @if ($satu != non) { $property : $property + saturate($satu) }
+  @if ($sepi != non) { $property : $property + sepia($sepi) }
+  transform: rotate3d(0,0,0,0);
+  filter: $property;
+  justify-content: center;
+}
